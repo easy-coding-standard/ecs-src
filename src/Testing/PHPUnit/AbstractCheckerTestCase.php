@@ -69,7 +69,7 @@ abstract class AbstractCheckerTestCase extends AbstractTestCase implements Confi
             $expectedContents = $fileContents;
         }
 
-        $inputFilePath = sys_get_temp_dir() . '/ecs_tests/' . md5((string) $inputContents) . '.php';
+        $inputFilePath = sys_get_temp_dir() . '/ecs_tests/' . md5($inputContents) . '.php';
         FileSystem::write($inputFilePath, $inputContents, null);
 
         // 1. process php-cs-fixer

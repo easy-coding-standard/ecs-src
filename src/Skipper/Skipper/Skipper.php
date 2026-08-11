@@ -14,14 +14,14 @@ use Symplify\EasyCodingStandard\Skipper\SkipVoter\PathSkipVoter;
  * @api
  * @see \Symplify\EasyCodingStandard\Tests\Skipper\Skipper\Skipper\SkipperTest
  */
-final class Skipper
+final readonly class Skipper
 {
     private const string FILE_ELEMENT = 'file_elements';
 
     /**
      * @var SkipVoterInterface[]
      */
-    private array $skipVoters = [];
+    private array $skipVoters;
 
     public function __construct(
         ClassAndCodeSkipVoter $classAndCodeSkipVoter,
