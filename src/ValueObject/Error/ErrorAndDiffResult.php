@@ -6,17 +6,17 @@ namespace Symplify\EasyCodingStandard\ValueObject\Error;
 
 use Symplify\EasyCodingStandard\SniffRunner\ValueObject\Error\CodingStandardError;
 
-final class ErrorAndDiffResult
+final readonly class ErrorAndDiffResult
 {
     /**
      * @var CodingStandardError[]
      */
-    private array $codingStandardErrors = [];
+    private array $codingStandardErrors;
 
     /**
      * @var FileDiff[]
      */
-    private array $fileDiffs = [];
+    private array $fileDiffs;
 
     /**
      * @param CodingStandardError[] $codingStandardErrors
@@ -26,7 +26,7 @@ final class ErrorAndDiffResult
     public function __construct(
         array $codingStandardErrors,
         array $fileDiffs,
-        private readonly array $systemErrors
+        private array $systemErrors
     ) {
         $this->codingStandardErrors = $this->sortByFileAndLine($codingStandardErrors);
         $this->fileDiffs = $this->sortByFilePath($fileDiffs);

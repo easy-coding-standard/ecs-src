@@ -24,24 +24,24 @@ use Throwable;
 /**
  * @see \Symplify\EasyCodingStandard\Tests\Error\ErrorCollector\FixerFileProcessorTest
  */
-final class FixerFileProcessor implements FileProcessorInterface
+final readonly class FixerFileProcessor implements FileProcessorInterface
 {
     /**
      * @var FixerInterface[]
      */
-    private array $fixers = [];
+    private array $fixers;
 
-    private readonly bool $isDebug;
+    private bool $isDebug;
 
     /**
      * @param FixerInterface[] $fixers
      */
     public function __construct(
-        private readonly FileToTokensParser $fileToTokensParser,
-        private readonly Skipper $skipper,
-        private readonly DifferInterface $differ,
-        private readonly EasyCodingStandardStyle $easyCodingStandardStyle,
-        private readonly FileDiffFactory $fileDiffFactory,
+        private FileToTokensParser $fileToTokensParser,
+        private Skipper $skipper,
+        private DifferInterface $differ,
+        private EasyCodingStandardStyle $easyCodingStandardStyle,
+        private FileDiffFactory $fileDiffFactory,
         array $fixers
     ) {
         $this->fixers = $this->sortFixers($fixers);

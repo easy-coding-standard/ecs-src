@@ -11,12 +11,12 @@ use Symplify\EasyCodingStandard\ValueObject\Option;
 /**
  * @see \Symplify\EasyCodingStandard\Tests\Finder\SourceFinderTest
  */
-final class SourceFinder
+final readonly class SourceFinder
 {
     /**
      * @var string[]
      */
-    private array $fileExtensions = [];
+    private array $fileExtensions;
 
     public function __construct()
     {
