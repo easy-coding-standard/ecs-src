@@ -19,6 +19,10 @@ final class SourceFinderTest extends AbstractTestCase
         $foundFiles = $sourceFinder->find([__DIR__ . '/SourceFinderSource/Source']);
         $this->assertCount(2, $foundFiles);
 
+        foreach ($foundFiles as $foundFile) {
+            $this->assertStringNotContainsString('node_modules', $foundFile);
+        }
+
         $foundFiles = $sourceFinder->find([__DIR__ . '/SourceFinderSource/Source/SomeClass.php.inc']);
         $this->assertCount(1, $foundFiles);
     }

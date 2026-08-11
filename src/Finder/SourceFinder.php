@@ -56,7 +56,7 @@ final class SourceFinder
             ->ignoreDotFiles(false)
             ->name($normalizedFileExtensions)
             ->in($directory)
-            ->exclude('vendor')
+            ->exclude(['vendor', 'node_modules'])
             // skip empty files
             ->size('> 0')
             ->sortByName();
