@@ -47,7 +47,10 @@
         "psr-4": {
             "Symplify\\EasyCodingStandard\\": "src",
             "Symplify\\CodingStandard\\": "packages/coding-standard/src"
-        }
+        },
+        "classmap": [
+            "stubs"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
