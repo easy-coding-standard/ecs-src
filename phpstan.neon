@@ -38,9 +38,6 @@ parameters:
     treatPhpDocTypesAsCertain: false
 
     ignoreErrors:
-        # @todo revisit: split return into typed file_diffs/coding_standard_errors buckets
-        - '#Method Symplify\\EasyCodingStandard\\Application\\SingleFileProcessor\:\:processFilePath\(\) should return array\{file_diffs\?\: array<Symplify\\EasyCodingStandard\\ValueObject\\Error\\FileDiff>, coding_standard_errors\?\: array<Symplify\\EasyCodingStandard\\SniffRunner\\ValueObject\\Error\\CodingStandardError>\} but returns array<(.*?), array<Symplify\\EasyCodingStandard\\SniffRunner\\ValueObject\\Error\\CodingStandardError\|Symplify\\EasyCodingStandard\\ValueObject\\Error\\FileDiff>>#'
-
         # on purpose to override a config
         -
             message: '#Missing call to parent\:\:setUp\(\) method#'
