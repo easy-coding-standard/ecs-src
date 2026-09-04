@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCodingStandard\Config;
 
+use Entropy\Console\Output\OutputColorizer;
+use Entropy\Console\Output\OutputPrinter;
 use Entropy\Container\Container;
 use Override;
 use PHP_CodeSniffer\Sniffs\Sniff;
@@ -204,6 +206,11 @@ final class ECSConfig extends Container
      */
     public function dynamicSets(array $setNames): void
     {
+        $outputPrinter = new OutputPrinter(new OutputColorizer());
+        $outputPrinter->warning(
+            'The "dynamicSets()" method is deprecated. Use ->rule()/->ruleWithConfiguration() or prepared sets instead.'
+        );
+
         trigger_error(
             'The "dynamicSets()" method is deprecated. Use ->rule()/->ruleWithConfiguration() or prepared sets instead.',
             E_USER_DEPRECATED
