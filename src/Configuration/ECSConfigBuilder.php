@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCodingStandard\Configuration;
 
+use Entropy\Console\Output\OutputColorizer;
+use Entropy\Console\Output\OutputPrinter;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\EndFileNewlineSniff as GenericEndFileNewlineSniff;
 use PHP_CodeSniffer\Standards\Generic\Sniffs\Files\EndFileNoNewlineSniff;
@@ -347,9 +349,9 @@ final class ECSConfigBuilder
      */
     public function withPhpCsFixerSets(): self
     {
-        trigger_error(
-            'The "withPhpCsFixerSets()" method is deprecated. Use ->withPreparedSets() or ->withSets() with prepared sets instead.',
-            E_USER_DEPRECATED
+        $outputPrinter = new OutputPrinter(new OutputColorizer());
+        $outputPrinter->warning(
+            'The "withPhpCsFixerSets()" method is deprecated. Use ->withPreparedSets() or ->withSets() with prepared sets instead.'
         );
 
         return $this;
