@@ -198,6 +198,18 @@ final class ECSConfig extends Container
         SimpleParameterProvider::setParameter(Option::REPORTING_REALPATH, $absolute);
     }
 
+    /**
+     * @deprecated Loading PHP-CS-Fixer sets is deprecated. Use ->rule()/->ruleWithConfiguration() or prepared sets instead.
+     * @param string[] $setNames
+     */
+    public function dynamicSets(array $setNames): void
+    {
+        trigger_error(
+            'The "dynamicSets()" method is deprecated. Use ->rule()/->ruleWithConfiguration() or prepared sets instead.',
+            E_USER_DEPRECATED
+        );
+    }
+
     public function import(string $setFilePath): void
     {
         $self = $this;
