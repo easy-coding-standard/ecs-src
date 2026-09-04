@@ -205,7 +205,7 @@ final class LineLengthFixer extends AbstractSymplifyFixer implements Configurabl
         }
 
         // @todo is __construct() class method and is newline parma enabled? → skip it
-        if ($this->standaloneLineConstructorParamFixer && $this->methodNameResolver->isMethodName(
+        if ($this->standaloneLineConstructorParamFixer instanceof StandaloneLineConstructorParamFixer && $this->methodNameResolver->isMethodName(
             $tokens,
             $position,
             '__construct'
