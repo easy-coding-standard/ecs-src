@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCodingStandard\Config;
 
+use Entropy\Console\Output\OutputColorizer;
+use Entropy\Console\Output\OutputPrinter;
 use Entropy\Container\Container;
 use Override;
 use PHP_CodeSniffer\Sniffs\Sniff;
 use PhpCsFixer\Fixer\ConfigurableFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\Fixer\WhitespacesAwareFixerInterface;
-use PhpCsFixer\FixerFactory;
-use PhpCsFixer\RuleSet\RuleSet;
 use PhpCsFixer\WhitespacesFixerConfig;
 use Symplify\EasyCodingStandard\Configuration\ECSConfigBuilder;
 use Symplify\EasyCodingStandard\DependencyInjection\CompilerPass\ConflictingCheckersCompilerPass;
@@ -201,27 +201,20 @@ final class ECSConfig extends Container
     }
 
     /**
-     * @see https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/ruleSets/index.rst
+     * @deprecated Loading PHP-CS-Fixer sets is deprecated. Use ->rule()/->ruleWithConfiguration() or prepared sets instead.
      * @param string[] $setNames
      */
     public function dynamicSets(array $setNames): void
     {
-        $fixerFactory = new FixerFactory();
-        $fixerFactory->registerBuiltInFixers();
+        $outputPrinter = new OutputPrinter(new OutputColorizer());
+        $outputPrinter->warning(
+            'The "dynamicSets()" method is deprecated. Use ->rule()/->ruleWithConfiguration() or prepared sets instead.'
+        );
 
-        $ruleSet = new RuleSet(array_fill_keys($setNames, true));
-        $fixerFactory->useRuleSet($ruleSet);
-
-        /** @var FixerInterface $fixer */
-        foreach ($fixerFactory->getFixers() as $fixer) {
-            $ruleConfiguration = $ruleSet->getRuleConfiguration($fixer->getName());
-
-            if ($ruleConfiguration === null) {
-                $this->rule($fixer::class);
-            } else {
-                $this->ruleWithConfiguration($fixer::class, $ruleConfiguration);
-            }
-        }
+        trigger_error(
+            'The "dynamicSets()" method is deprecated. Use ->rule()/->ruleWithConfiguration() or prepared sets instead.',
+            E_USER_DEPRECATED
+        );
     }
 
     public function import(string $setFilePath): void
