@@ -21,12 +21,6 @@ final class SetList
 
     /**
      * @api
-     * @deprecated rules moved to the "common" sets (array, docblock, spaces). Use SetList::COMMON instead.
-     */
-    public const string SYMPLIFY = __DIR__ . '/../../../config/set/symplify.php';
-
-    /**
-     * @api
      */
     public const string ARRAY = __DIR__ . '/../../../config/set/common/array.php';
 
