@@ -43,7 +43,6 @@ final readonly class ConfigurationFactory
         $showDiffs = ! $noDiffs;
 
         $isParallel = SimpleParameterProvider::getBoolParameter(Option::PARALLEL);
-        $isReportingWithRealPath = SimpleParameterProvider::getBoolParameter(Option::REPORTING_REALPATH);
 
         return new Configuration(
             $isFixer,
@@ -57,8 +56,7 @@ final readonly class ConfigurationFactory
             $parallelPort,
             $parallelIdentifier,
             $memoryLimit,
-            $showDiffs,
-            $isReportingWithRealPath
+            $showDiffs
         );
     }
 

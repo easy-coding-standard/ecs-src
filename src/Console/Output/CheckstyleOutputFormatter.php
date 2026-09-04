@@ -31,7 +31,7 @@ final readonly class CheckstyleOutputFormatter implements OutputFormatterInterfa
     {
         $checkstyleContent = $this->createCheckstyleContent(
             $errorAndDiffResult,
-            $configuration->isReportingWithRealPath()
+            false
         );
         $this->easyCodingStandardStyle->writeln($checkstyleContent);
 

@@ -23,8 +23,7 @@ final readonly class Configuration
         private string|null $parallelPort = null,
         private string|null $parallelIdentifier = null,
         private string|null $memoryLimit = null,
-        private bool $showDiffs = true,
-        private bool $reportingWithRealPath = false
+        private bool $showDiffs = true
     ) {
     }
 
@@ -89,10 +88,5 @@ final readonly class Configuration
     public function getMemoryLimit(): ?string
     {
         return $this->memoryLimit;
-    }
-
-    public function isReportingWithRealPath(): bool
-    {
-        return $this->reportingWithRealPath;
     }
 }

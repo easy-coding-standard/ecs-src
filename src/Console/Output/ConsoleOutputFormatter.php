@@ -28,7 +28,7 @@ final readonly class ConsoleOutputFormatter implements OutputFormatterInterface
     public function report(ErrorAndDiffResult $errorAndDiffResult, Configuration $configuration): int
     {
         if ($configuration->shouldShowDiffs()) {
-            $this->reportFileDiffs($errorAndDiffResult->getFileDiffs(), $configuration->isReportingWithRealPath());
+            $this->reportFileDiffs($errorAndDiffResult->getFileDiffs());
         }
 
         $this->easyCodingStandardStyle->newLine(1);

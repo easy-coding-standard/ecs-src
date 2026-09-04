@@ -20,5 +20,4 @@ return ECSConfig::configure()
     ->withCache(directory: $cacheDirectory, namespace: $cacheNamespace)
     ->withFileExtensions(['php'])
     ->withSkip([])
-    ->withPaths([])
-    ->withRealPathReporting(false);
+    ->withPaths([]);
