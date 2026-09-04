@@ -10,8 +10,6 @@ use PHP_CodeSniffer\Sniffs\Sniff;
 use PhpCsFixer\Fixer\ConfigurableFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\Fixer\WhitespacesAwareFixerInterface;
-use PhpCsFixer\FixerFactory;
-use PhpCsFixer\RuleSet\RuleSet;
 use PhpCsFixer\WhitespacesFixerConfig;
 use Symplify\EasyCodingStandard\Configuration\ECSConfigBuilder;
 use Symplify\EasyCodingStandard\DependencyInjection\CompilerPass\ConflictingCheckersCompilerPass;
@@ -198,30 +196,6 @@ final class ECSConfig extends Container
     public function reportingRealPath(bool $absolute = true): void
     {
         SimpleParameterProvider::setParameter(Option::REPORTING_REALPATH, $absolute);
-    }
-
-    /**
-     * @see https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/blob/master/doc/ruleSets/index.rst
-     * @param string[] $setNames
-     */
-    public function dynamicSets(array $setNames): void
-    {
-        $fixerFactory = new FixerFactory();
-        $fixerFactory->registerBuiltInFixers();
-
-        $ruleSet = new RuleSet(array_fill_keys($setNames, true));
-        $fixerFactory->useRuleSet($ruleSet);
-
-        /** @var FixerInterface $fixer */
-        foreach ($fixerFactory->getFixers() as $fixer) {
-            $ruleConfiguration = $ruleSet->getRuleConfiguration($fixer->getName());
-
-            if ($ruleConfiguration === null) {
-                $this->rule($fixer::class);
-            } else {
-                $this->ruleWithConfiguration($fixer::class, $ruleConfiguration);
-            }
-        }
     }
 
     public function import(string $setFilePath): void
