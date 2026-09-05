@@ -41,4 +41,12 @@ final class OutputFormatterCollectorTest extends AbstractTestCase
             $this->outputFormatterCollector->getByName(CheckstyleOutputFormatter::getName())
         );
     }
+
+    public function testRemovedJUnitFormatFallsBackToConsole(): void
+    {
+        $this->assertInstanceOf(
+            ConsoleOutputFormatter::class,
+            $this->outputFormatterCollector->getByName('junit')
+        );
+    }
 }
