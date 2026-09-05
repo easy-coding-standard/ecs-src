@@ -8,7 +8,6 @@ use Symplify\EasyCodingStandard\Console\Output\CheckstyleOutputFormatter;
 use Symplify\EasyCodingStandard\Console\Output\ConsoleOutputFormatter;
 use Symplify\EasyCodingStandard\Console\Output\GitlabOutputFormatter;
 use Symplify\EasyCodingStandard\Console\Output\JsonOutputFormatter;
-use Symplify\EasyCodingStandard\Console\Output\JUnitOutputFormatter;
 use Symplify\EasyCodingStandard\Console\Output\OutputFormatterCollector;
 use Symplify\EasyCodingStandard\Testing\PHPUnit\AbstractTestCase;
 
@@ -34,16 +33,20 @@ final class OutputFormatterCollectorTest extends AbstractTestCase
             $this->outputFormatterCollector->getByName(JsonOutputFormatter::getName())
         );
         $this->assertInstanceOf(
-            JUnitOutputFormatter::class,
-            $this->outputFormatterCollector->getByName(JUnitOutputFormatter::getName())
-        );
-        $this->assertInstanceOf(
             GitlabOutputFormatter::class,
             $this->outputFormatterCollector->getByName(GitlabOutputFormatter::getName())
         );
         $this->assertInstanceOf(
             CheckstyleOutputFormatter::class,
             $this->outputFormatterCollector->getByName(CheckstyleOutputFormatter::getName())
+        );
+    }
+
+    public function testRemovedJUnitFormatFallsBackToConsole(): void
+    {
+        $this->assertInstanceOf(
+            ConsoleOutputFormatter::class,
+            $this->outputFormatterCollector->getByName('junit')
         );
     }
 }
