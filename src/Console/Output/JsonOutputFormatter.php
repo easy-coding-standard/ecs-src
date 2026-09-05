@@ -29,7 +29,7 @@ final readonly class JsonOutputFormatter implements OutputFormatterInterface
      */
     public function report(ErrorAndDiffResult $errorAndDiffResult, Configuration $configuration): int
     {
-        $json = $this->createJsonContent($errorAndDiffResult, $configuration->isReportingWithRealPath());
+        $json = $this->createJsonContent($errorAndDiffResult, true);
         $this->easyCodingStandardStyle->writeln($json);
 
         return $this->exitCodeResolver->resolve($errorAndDiffResult, $configuration);

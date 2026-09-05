@@ -27,7 +27,7 @@ final readonly class JUnitOutputFormatter implements OutputFormatterInterface
      */
     public function report(ErrorAndDiffResult $errorAndDiffResult, Configuration $configuration): int
     {
-        $xml = $this->createXmlOutput($errorAndDiffResult, $configuration->isReportingWithRealPath());
+        $xml = $this->createXmlOutput($errorAndDiffResult, false);
         $this->easyCodingStandardStyle->writeln($xml);
 
         return $this->exitCodeResolver->resolve($errorAndDiffResult, $configuration);
