@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Symplify\EasyCodingStandard\Tests\Console\Output;
 
-use Symplify\EasyCodingStandard\Console\Output\CheckstyleOutputFormatter;
 use Symplify\EasyCodingStandard\Console\Output\ConsoleOutputFormatter;
 use Symplify\EasyCodingStandard\Console\Output\JsonOutputFormatter;
 use Symplify\EasyCodingStandard\Console\Output\OutputFormatterCollector;
@@ -31,10 +30,6 @@ final class OutputFormatterCollectorTest extends AbstractTestCase
             JsonOutputFormatter::class,
             $this->outputFormatterCollector->getByName(JsonOutputFormatter::getName())
         );
-        $this->assertInstanceOf(
-            CheckstyleOutputFormatter::class,
-            $this->outputFormatterCollector->getByName(CheckstyleOutputFormatter::getName())
-        );
     }
 
     public function testRemovedJUnitFormatFallsBackToConsole(): void
@@ -50,6 +45,14 @@ final class OutputFormatterCollectorTest extends AbstractTestCase
         $this->assertInstanceOf(
             ConsoleOutputFormatter::class,
             $this->outputFormatterCollector->getByName('gitlab')
+        );
+    }
+
+    public function testRemovedCheckstyleFormatFallsBackToConsole(): void
+    {
+        $this->assertInstanceOf(
+            ConsoleOutputFormatter::class,
+            $this->outputFormatterCollector->getByName('checkstyle')
         );
     }
 }

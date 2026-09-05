@@ -18,6 +18,7 @@ final class OutputFormatterCollector
     private const array REMOVED_FORMATS = [
         'junit' => ConsoleOutputFormatter::NAME,
         'gitlab' => ConsoleOutputFormatter::NAME,
+        'checkstyle' => ConsoleOutputFormatter::NAME,
     ];
 
     /**
