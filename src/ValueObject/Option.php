@@ -29,12 +29,6 @@ final class Option
     public const string PATHS = 'paths';
 
     /**
-     * @api
-     * @deprecated Use @see \Symplify\EasyCodingStandard\Config\ECSConfig::skip()
-     */
-    public const string ONLY = 'only';
-
-    /**
      * @deprecated Use @see \Symplify\EasyCodingStandard\Config\ECSConfig::cacheDirectory()
      */
     public const string CACHE_DIRECTORY = 'cache_directory';
