@@ -8,7 +8,6 @@ use Nette\Utils\Strings;
 require __DIR__ . '/vendor/autoload.php';
 
 $timestamp = (new DateTime('now'))->format('Ym');
-
 use Symplify\EasyCodingStandard\Application\Version\StaticVersionResolver;
 
 // excluding polyfills in generic way
